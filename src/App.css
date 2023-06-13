@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@400;700&family=Lora:wght@400;700&display=swap");
+
+.sans-serif {
+  font-family: "Inter", sans-serif;
+}
+
+.serif {
+  font-family: "Lora", serif;
+}
+
+.mono {
+  font-family: "Inconsolata", monospace;
+}
+body {
+  font-family: "Inter", sans-serif;
+}
+
+main {
+  margin-inline: auto;
+  width: 375px;
+  height: auto;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .font-select {
+  position: relative;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.font-select .choose {
+  display: inline-block;
+}
+
+nav .font-select span:first-child {
+  margin-right: 0.8rem;
+}
+nav .font-select span:hover {
+  cursor: pointer;
+}
+
+nav .font-select-sub.shown {
+  display: block;
+  margin-top: 1rem;
+}
+nav .font-select-sub {
+  width: 10.5rem;
+  height: auto;
+  padding-left: 0.4rem;
+  padding: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: none;
+
+  transition: 0.4 ease-out;
+
+  position: absolute;
+  right: 0;
+  background-color: var(--input-background);
+  box-shadow: 0px 5px 30px #a445ed;
+  border-radius: 1.6rem;
+}
+
+.font-select-sub .sans-serif {
+  font-family: "Inter", sans-serif;
+}
+.font-select-sub .sans-serif span:hover {
+  color: #a445ed;
+  cursor: pointer;
+}
+.font-select-sub .serif {
+  font-family: "Lora", sans-serif;
+}
+.font-select-sub .serif span:hover {
+  color: #a445ed;
+  cursor: pointer;
+}
+.font-select-sub .mono {
+  font-family: "Inconsolata", sans-serif;
+}
+.font-select-sub .mono span:hover {
+  color: #a445ed;
+  cursor: pointer;
+}
+
+.font-select-sub div + div {
+  margin-top: 0.8rem;
+}
+
+.bookLogo {
+  width: 2.8rem;
+  height: 3.2rem;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 1.9rem;
+}
+.border {
+  border-color: #e9e9e9;
+  height: 3.2rem;
+  width: 0.1rem;
+  border: 0.1rem solid;
+  /* background-color: red; */
+}
+
+.search-bar {
+  background-color: var(--input-background);
+  width: 100%;
+  height: 4.8rem;
+  border-radius: 1.6rem;
+  padding: 1.5rem 2.4rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+}
+
+.search-bar input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.9rem;
+  color: inherit;
+}
