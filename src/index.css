@@ -1,8 +1,5 @@
 :root {
-  color-scheme: light dark;
-  color: #ffffff;
   font-size: 62.5%;
-  --input-background: #1f1f1f;
 }
 * {
   margin: 0;
@@ -19,17 +16,6 @@ body {
   width: 100vw;
 
   min-height: 100vh;
-  background-color: #050505;
+  background-color: var(--body-background);
   padding: 2.4rem;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #2d2d2d;
-    --input-background: #ffffff;
-  }
-
-  body {
-    background-color: #ffffff;
-  }
 }

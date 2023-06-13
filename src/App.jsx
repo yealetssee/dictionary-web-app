@@ -1,7 +1,9 @@
 import "./App.css";
+
 import searchIcon from "../public/images/icon-search.svg";
 import { useState } from "react";
-import Toggle from "react-toggle";
+import useService from "./hooks/useService";
+import ToggleMode from "./components/ToggleDarkMode";
 
 const fontStyles = {
   sansSerif: {
@@ -17,6 +19,8 @@ const fontStyles = {
 };
 
 function App() {
+  const { searchInput, searchResult, handleInputChange, searchClickHandler } =
+    useService();
   const [font, setFont] = useState("Sans Serif");
 
   const [showMenu, setShowMenu] = useState(false);
@@ -28,9 +32,9 @@ function App() {
   const handleMenuBlur = () => {
     setTimeout(() => {
       setShowMenu(false);
-    }, 0);
+    }, 200);
   };
-
+  console.log(searchResult);
   return (
     <main style={fontStyles[font]}>
       <nav>
@@ -96,24 +100,55 @@ function App() {
             </span>
           </div>
           <div className="border"></div>
-          <Toggle />
+          <ToggleMode />
         </div>
       </nav>
       <div className="search-bar">
-        <input type="text" placeholder="Search for any word..." />
-        <img src={searchIcon} alt="search icon" width="16" height="16" />
+        <input
+          type="text"
+          placeholder="Search for any word..."
+          value={searchInput}
+          onChange={handleInputChange}
+        />
+        <img
+          src={searchIcon}
+          alt="search icon"
+          width="16"
+          height="16"
+          onClick={searchClickHandler}
+        />
       </div>
+      {JSON.stringify(searchResult) !== "{}" && (
+        <section className="word-meaning">
+          <div className="word-play">
+            <div>
+              <p className="word">{searchResult[0].word}</p>
 
-      <main>
-        <div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-            expedita est dolor in cupiditate error quod, unde corporis maxime!
-            Perferendis, natus. Adipisci autem quos maxime cumque, porro
-            deleniti dolorem doloribus.
-          </p>
-        </div>
-      </main>
+              <p className="phonetic">{searchResult[0].phonetics[0].text}</p>
+            </div>
+            <div className="play">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="75"
+                height="75"
+                viewBox="0 0 75 75"
+              >
+                <g fill="#A445ED" fillRule="evenodd">
+                  <circle cx="37.5" cy="37.5" r="37.5" />
+                  <path d="M29 27v21l21-10.5z" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div className="noun">
+            <span className="sub-noun">noun</span>
+            <span className="line"></span>
+          </div>
+
+          <p className="meaning">Meaning</p>
+          <ul className="first-list"></ul>
+        </section>
+      )}
     </main>
   );
 }
