@@ -6,6 +6,7 @@ import useService from "./hooks/useService";
 import ToggleMode from "./components/ToggleDarkMode";
 import Definition from "./components/Definition";
 import Play from "./components/Playbutton";
+import Notfound from "./components/Notfound";
 
 const fontStyles = {
   sansSerif: {
@@ -27,6 +28,7 @@ function App() {
     handleInputChange,
     searchClickHandler,
     isEmpty,
+    error,
   } = useService();
   const [font, setFont] = useState("Sans Serif");
 
@@ -135,7 +137,7 @@ function App() {
         </div>
       )}
 
-      {JSON.stringify(searchResult) !== "{}" && (
+      {JSON.stringify(searchResult) !== "{}" && error !== true && (
         <section className="word-meaning">
           <div className="word-play">
             <div>
@@ -170,6 +172,7 @@ function App() {
           </div>
         </section>
       )}
+      {error && <Notfound />}
     </main>
   );
 }

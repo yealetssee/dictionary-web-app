@@ -298,3 +298,39 @@ audio {
   display: flex;
   gap: 0.8rem;
 }
+
+.notFound-parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6rem;
+}
+
+.notFound-parent .emoji {
+  font-size: 6rem;
+}
+.notFound-parent h3 {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.notFound-parent .text {
+  margin-top: 1rem;
+  color: #757575;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  main {
+    width: 768px;
+  }
+  nav .font-select {
+    font-size: 1.8rem;
+  }
+  .search-bar {
+    width: 68.9rem;
+  }
+}
