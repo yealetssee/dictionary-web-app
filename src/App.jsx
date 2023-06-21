@@ -1,9 +1,11 @@
 import "./App.css";
 
 import searchIcon from "../public/images/icon-search.svg";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import useService from "./hooks/useService";
 import ToggleMode from "./components/ToggleDarkMode";
+import Definition from "./components/Definition";
+import Play from "./components/Playbutton";
 
 const fontStyles = {
   sansSerif: {
@@ -19,8 +21,13 @@ const fontStyles = {
 };
 
 function App() {
-  const { searchInput, searchResult, handleInputChange, searchClickHandler } =
-    useService();
+  const {
+    searchInput,
+    searchResult,
+    handleInputChange,
+    searchClickHandler,
+    isEmpty,
+  } = useService();
   const [font, setFont] = useState("Sans Serif");
 
   const [showMenu, setShowMenu] = useState(false);
@@ -34,7 +41,8 @@ function App() {
       setShowMenu(false);
     }, 200);
   };
-  console.log(searchResult);
+  // console.log(searchResult);
+
   return (
     <main style={fontStyles[font]}>
       <nav>
@@ -103,7 +111,10 @@ function App() {
           <ToggleMode />
         </div>
       </nav>
-      <div className="search-bar">
+      <div
+        className="search-bar"
+        style={isEmpty ? { border: "1px solid #FF5252" } : {}}
+      >
         <input
           type="text"
           placeholder="Search for any word..."
@@ -118,35 +129,45 @@ function App() {
           onClick={searchClickHandler}
         />
       </div>
+      {isEmpty && (
+        <div className="error-text">
+          <span>Whoops, can't be empty…</span>
+        </div>
+      )}
+
       {JSON.stringify(searchResult) !== "{}" && (
         <section className="word-meaning">
           <div className="word-play">
             <div>
               <p className="word">{searchResult[0].word}</p>
 
-              <p className="phonetic">{searchResult[0].phonetics[0].text}</p>
+              <p className="phonetic">{searchResult[0].phonetic}</p>
             </div>
-            <div className="play">
+            <Play searchResult={searchResult} />
+          </div>
+          <Definition searchResult={searchResult} />
+
+          <div className="source">
+            <p>Source</p>
+            <a href={searchResult[0].sourceUrls}>
+              {searchResult[0].sourceUrls}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="75"
-                height="75"
-                viewBox="0 0 75 75"
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
               >
-                <g fill="#A445ED" fillRule="evenodd">
-                  <circle cx="37.5" cy="37.5" r="37.5" />
-                  <path d="M29 27v21l21-10.5z" />
-                </g>
+                <path
+                  fill="none"
+                  stroke="#838383"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.2"
+                  d="M6.09 3.545H2.456A1.455 1.455 0 0 0 1 5v6.545A1.455 1.455 0 0 0 2.455 13H9a1.455 1.455 0 0 0 1.455-1.455V7.91m-5.091.727 7.272-7.272m0 0H9m3.636 0V5"
+                />
               </svg>
-            </div>
+            </a>
           </div>
-          <div className="noun">
-            <span className="sub-noun">noun</span>
-            <span className="line"></span>
-          </div>
-
-          <p className="meaning">Meaning</p>
-          <ul className="first-list"></ul>
         </section>
       )}
     </main>

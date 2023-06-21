@@ -43,7 +43,6 @@ const ToggleMode = () => {
           uncheckedIcon={false}
           onColor="#A445ED"
         />
-        {/* <span className="toggle-label">Toggle Switch</span> */}
       </label>
       <span>
         <svg

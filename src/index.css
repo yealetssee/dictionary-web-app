@@ -7,10 +7,11 @@
   box-sizing: border-box;
 }
 
-#root {
+/* #root {
   max-width: 1440px;
   height: 100vh;
-}
+  overflow-x: hidden;
+} */
 
 body {
   width: 100vw;
@@ -18,4 +19,5 @@ body {
   min-height: 100vh;
   background-color: var(--body-background);
   padding: 2.4rem;
+  overflow-x: hidden;
 }

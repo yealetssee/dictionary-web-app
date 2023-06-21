@@ -1,9 +1,10 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useService = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState({});
+  const [isEmpty, setIsEmpty] = useState(false);
 
   const fetchWord = async () => {
     try {
@@ -15,15 +16,17 @@ const useService = () => {
       console.error(error);
     }
   };
-
   const searchClickHandler = () => {
-    if (searchInput !== "") {
+    if (searchInput.trim() !== "") {
       fetchWord();
+    } else {
+      setIsEmpty(true);
     }
   };
 
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
+    setIsEmpty(false);
   };
 
   return {
@@ -31,6 +34,7 @@ const useService = () => {
     searchResult,
     searchClickHandler,
     handleInputChange,
+    isEmpty,
   };
 };
 
