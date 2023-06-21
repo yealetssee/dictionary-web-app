@@ -6,6 +6,7 @@ body {
   --body-background: #ffffff;
   --noun-line: #e9e9e9;
   --a-color: #2d2d2d;
+  /* width: 375px; */
 }
 @media (prefers-color-scheme) {
   body.dark {
@@ -20,6 +21,7 @@ body {
 main {
   margin-inline: auto;
   width: 375px;
+
   height: auto;
   min-height: 20rem;
   overflow-x: hidden;
@@ -325,12 +327,81 @@ audio {
 
 @media (min-width: 768px) {
   main {
-    width: 768px;
+    width: 689px;
+  }
+  nav {
+    width: 100%;
+  }
+  section {
+    width: 100%;
   }
   nav .font-select {
     font-size: 1.8rem;
   }
   .search-bar {
-    width: 68.9rem;
+    width: 100%;
+  }
+  .search-bar input {
+    font-size: 2rem;
+  }
+
+  .word-play .word {
+    font-size: 6.4rem;
+    line-height: 6.7rem;
+  }
+  .word-play .phonetic {
+    font-size: 2.4rem;
+  }
+  .word-play .play svg {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+  .noun {
+    font-size: 2.4rem;
+  }
+  .noun .line {
+    width: 100%;
+  }
+  .meaning {
+    font-size: 2rem;
+  }
+  .definition .content {
+    font-size: 1.8rem;
+  }
+  .definition .example {
+    font-size: 1.8rem;
+  }
+  .syn span,
+  .ant span {
+    font-size: 2rem;
+  }
+  .syn {
+    margin-top: 4rem;
+  }
+  .ant {
+    margin-top: 2rem;
+  }
+  .source {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .source a {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  main {
+    width: 736px;
+  }
+  nav {
+    width: 100%;
+  }
+  section {
+    width: 100%;
+  }
+  .search-bar {
+    width: 100%;
   }
 }
